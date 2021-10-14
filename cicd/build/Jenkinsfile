@@ -1,0 +1,61 @@
+pipeline {
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout([
+          $class: 'GitSCM',
+          branches: [[
+            name: '*/master'
+          ]],
+          doGenerateSubmoduleConfigurations: false,
+          userRemoteConfigs: [[
+            credentialsId: '',
+            url: ''
+          ]]
+        ])
+      }
+    }
+    stage('Build App') {
+      steps {
+        sh './gradlew bootJar -i'
+      }
+    }
+    stage('Code Analysis') {
+      steps {
+        sh './gradlew lint -i'
+      }
+    }
+    stage('Unit Tests') {
+      steps {
+        sh './gradlew test -i'
+      }
+    }
+    stage('Integration Tests') {
+      steps {
+        sh './gradlew integrationTest -i'
+      }
+    }
+  }
+
+  post {
+    always {
+      publishHTML([
+        allowMissing: false,
+        alwaysLinkToLastBuild: false,
+        keepAll: false,
+        reportDir: 'build/reports/jacoco/test/html/',
+        reportFiles: 'index.html',
+        reportName: 'Unit Tests Report'
+      ])
+      publishHTML([
+        allowMissing: false,
+        alwaysLinkToLastBuild: false,
+        keepAll: false,
+        reportDir: 'build/reports/tests/integrationTest/',
+        reportFiles: 'index.html',
+        reportName: 'Integration Tests Report'
+      ])
+      cleanWs()
+    }
+  }
+}

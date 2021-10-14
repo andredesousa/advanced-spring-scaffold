@@ -1,0 +1,14 @@
+jdbcSettings:
+  url: ${DB_URL}
+  username: ${DB_USER}
+  password: ${DB_PASSWORD}
+  driverClassName: "org.postgresql.Driver"
+
+packageName: "app.entities"
+
+tableExclusionRules:
+  - tableName: ["flyway_schema_history"]
+
+classNameRules:
+  - tableName: "users"
+    className: "User"

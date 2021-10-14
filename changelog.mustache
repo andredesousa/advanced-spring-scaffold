@@ -1,0 +1,25 @@
+# Changelog
+
+{{#tags}}
+## [{{name}}](https://github.com/andredesousa/advanced-spring-scaffold/compare/{{name}}) ({{tagDate .}})
+
+  {{#ifContainsType commits type='feat'}}
+### Features
+
+    {{#commits}}
+      {{#ifCommitType . type='feat'}}
+- {{#eachCommitScope .}}**{{.}}** {{/eachCommitScope}}{{{commitDescription .}}} ([{{hash}}](https://github.com/andredesousa/advanced-spring-scaffold/commit/{{hashFull}}))
+      {{/ifCommitType}}
+    {{/commits}}
+  {{/ifContainsType}}
+
+  {{#ifContainsType commits type='fix'}}
+### Bug Fixes
+
+    {{#commits}}
+      {{#ifCommitType . type='fix'}}
+- {{#eachCommitScope .}}**{{.}}** {{/eachCommitScope}}{{{commitDescription .}}} ([{{hash}}](https://github.com/andredesousa/advanced-spring-scaffold/commit/{{hashFull}}))
+      {{/ifCommitType}}
+    {{/commits}}
+  {{/ifContainsType}}
+{{/tags}}

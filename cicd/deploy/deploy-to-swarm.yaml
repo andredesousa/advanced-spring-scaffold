@@ -1,0 +1,27 @@
+---
+- name: Deploy Spring API
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Deploy to Docker Swarm
+      docker_stack:
+        name: "spring-api"
+        state: present
+        compose:
+          - version: "3.7"
+            services:
+              spring-api:
+                image: spring-api:latest
+                restart: always
+                environment:
+                  - SPRING_PROFILES_ACTIVE={{ lookup('env', 'SPRING_PROFILES_ACTIVE') }}
+                  - DB_URL={{ lookup('env', 'DB_URL') }}
+                  - DB_USER={{ lookup('env', 'DB_USER') }}
+                  - DB_PASSWORD={{ lookup('env', 'DB_PASSWORD') }}
+                  - DB_VALIDATE={{ lookup('env', 'DB_VALIDATE') }}
+                  - JWT_SECRET={{ lookup('env', 'JWT_SECRET') }}
+                  - JWT_EXPIRATION={{ lookup('env', 'JWT_EXPIRATION') }}
+                ports:
+                  - "8080:8080"
+        resolve_image: always
