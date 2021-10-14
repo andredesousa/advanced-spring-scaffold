@@ -32,9 +32,9 @@ public class HealthTests {
             .withNetwork(NETWORK)
             .withNetworkAliases("postgres")
             .withExposedPorts(5432)
+            .withDatabaseName("spring")
             .withUsername("root")
             .withPassword("secret")
-            .withDatabaseName("spring")
             .waitingFor(Wait.forListeningPort());
 
         APP_CONTAINER

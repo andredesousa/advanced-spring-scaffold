@@ -113,7 +113,7 @@ The next tasks should be executed in a console inside the root directory:
 - `./gradlew generateEntities` - Generates the entities sources.
 - `./gradlew generateOpenApiDocs` - Generates the spring doc openapi file.
 - `./gradlew generateChangelog` - Generates a changelog from GIT repository.
-- `./gradlew dependencyCheckAnalyze` - Identifies and reports known vulnerabilities (CVEs) in project dependencies.
+- `./gradlew dependencyCheckAnalyze` - Identifies and reports known vulnerabilities in project dependencies.
 - `./gradlew dependencyUpdates` - Displays the dependency updates for the project.
 - `./gradlew build` - Assembles and tests this project.
 - `./gradlew bootJar` - Assembles an executable jar archive containing the main classes and their dependencies.

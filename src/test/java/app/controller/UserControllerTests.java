@@ -56,7 +56,7 @@ public class UserControllerTests {
         UserDto user = new UserDto();
         when(userService.update(user)).thenReturn(user);
 
-        assertThat(userController.update(1, user)).isEqualTo(user);
+        assertThat(userController.update(user)).isEqualTo(user);
     }
 
     @Test
