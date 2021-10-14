@@ -54,9 +54,9 @@ processResources {
 
 dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
-    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
-    implementation 'org.projectlombok:lombok'
+    implementation 'org.projectlombok:lombok:1.18.22'
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -66,7 +66,7 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.postgresql:postgresql:42.2.24'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.assertj:assertj-core:3.21.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
