@@ -89,7 +89,7 @@ You can use the following naming convention for your packages:
 - Other common packages are `mapper`, `filter`, `exception`, `util`, etc.
 - Static files are placed in `src/main/resources` folder.
 
-The **unit tests**, **integration test** and **smoke tests** are in the `src/test`, `src/integrationTest` and `src/smokeTest` folders.
+The **unit tests**, **integration tests** and **smoke tests** are in the `src/test`, `src/integrationTest` and `src/smokeTest` folders.
 
 ## Available gradle tasks
 
@@ -132,12 +132,12 @@ Note that the `application.properties` file uses environment variables defined i
 
 Beyond that, you can serve the app using continuous build which will automatically re-execute builds on file change.
 Run `./gradlew classes -t` and `./gradlew bootRun` on different terminals to enable auto restart on file change.
-However, this functionality is provided by **Spring Boot DevTools**.
+However, this functionality is provided by plugins for your IDE.
 
 ## REST interface
 
 REST is acronym for REpresentational State Transfer.
-The common resource methods are GET/PUT/POST/DELETE.
+The common resource methods are GET, POST, PUT and DELETE.
 This project follows [JSON:API](https://jsonapi.org/) specification for building APIs in JSON.
 This project includes [Swagger](https://swagger.io/). To get a visual representation of the interface and send requests for testing purposes go to [http://localhost:8080/swagger-ui/](http://localhost:8080/swagger-ui/).
 The OpenAPI Specification is automatically generated. Run `./gradlew generateOpenApiDocs` to see the [openapi.json](build/docs/openapi.json) file.
@@ -165,7 +165,8 @@ Alternatively, you can use [jOOQ](https://www.jooq.org/) to generate Java code f
 
 Authentication is an essential part of most applications. There are many different approaches and strategies to handle authentication.
 
-[JSON Web Tokens](https://jwt.io/) is an authentication standard that works by generating and signing tokens, passing them around between the client-side and server-side applications, passed around via query strings, authorization headers, or other mediums. Having such a valid and non-expired token, extracted from an HTTP Request, signals the fact that the user is authenticated and is allowed to access protected resources.
+[JSON Web Tokens](https://jwt.io/) is an authentication standard that works by generating and signing tokens, passing them around between the client-side and server-side applications, passed around via query strings, authorization headers, or other mediums.
+Having such a valid and non-expired token, extracted from an HTTP Request, signals the fact that the user is authenticated and is allowed to access protected resources.
 The default user is `admin` and the password is `admin`. Use for development only.
 
 Authorization refers to the process that determines what a user is able to do.
@@ -270,10 +271,12 @@ Use `./gradlew smokeTest` to execute the smoke tests via [JUnit 5](https://junit
 Use `./gradlew smokeTest -t` to keep executing your tests while watching for file changes in the background.
 You can see the HTML report opening the [index.html](build/reports/tests/smokeTest/index.html) file in your web browser.
 
+Like other test suites, you can also run subsets of a test suite. See the Test filtering section of the Gradle documentation.
+
 ## Debugging
 
 You can debug the source code, add breakpoints, inspect variables and view the application's call stack.
-Also, you can use the IDE for debugging the source code, unit and integration tests.
+Also, you can use the IDE for debugging the source code, unit, integration and smoke tests.
 These functionalities are provided natively or using **Spring Boot DevTools**.
 
 You can customize the [log verbosity](https://docs.gradle.org/current/userguide/logging.html#logging) of gradle tasks using the `-i` or `--info` flag.
@@ -349,7 +352,7 @@ You can deploy this project to Docker Swarm using `./gradlew deploy` task.
 
 ## Reference Documentation
 
-For further reference, please consider the following sections:
+For further reference, please consider the following articles:
 
 - [Official Gradle documentation](https://docs.gradle.org)
 - [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.5.5/gradle-plugin/reference/html/)
@@ -363,5 +366,5 @@ For further reference, please consider the following sections:
 - [Flyway Migration](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#howto-execute-flyway-database-migrations-on-startup)
 - [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.5.5/reference/htmlsingle/#production-ready)
 - [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
-- [Testcontainers Postgres Module Reference Guide](https://www.testcontainers.org/modules/databases/postgres/)
 - [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.5.5/gradle-plugin/reference/html/#build-image)
+- [Testcontainers Postgres Module Reference Guide](https://www.testcontainers.org/modules/databases/postgres/)
