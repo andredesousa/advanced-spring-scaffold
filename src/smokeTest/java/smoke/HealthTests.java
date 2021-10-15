@@ -35,7 +35,8 @@ public class HealthTests {
             .withDatabaseName("spring")
             .withUsername("root")
             .withPassword("secret")
-            .waitingFor(Wait.forListeningPort());
+            .waitingFor(Wait.forListeningPort())
+            .start();
 
         APP_CONTAINER
             .withNetwork(NETWORK)
@@ -47,10 +48,8 @@ public class HealthTests {
             .withEnv("DB_VALIDATE", "none")
             .withEnv("JWT_SECRET", "<ApiSecretKey>")
             .withEnv("JWT_EXPIRATION", "3600")
-            .waitingFor(Wait.forListeningPort());
-
-        PG_CONTAINER.start();
-        APP_CONTAINER.start();
+            .waitingFor(Wait.forListeningPort())
+            .start();
     }
 
     @AfterAll
