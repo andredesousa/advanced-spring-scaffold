@@ -204,7 +204,7 @@ task generateEntities(type: Exec) {
     environment([DB_URL: DB_URL, DB_USER: DB_USER, DB_PASSWORD: DB_PASSWORD])
     doLast {
         ant.replace(token: '\\\"', value: '') {
-            fileset(dir: 'src/main/java/app/entities')
+            fileset(dir: 'src/main/java/app/entity')
         }
     }
 }
