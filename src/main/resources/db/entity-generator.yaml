@@ -4,7 +4,7 @@ jdbcSettings:
   password: ${DB_PASSWORD}
   driverClassName: "org.postgresql.Driver"
 
-packageName: "app.entities"
+packageName: "app.entity"
 
 tableExclusionRules:
   - tableName: ["flyway_schema_history"]
