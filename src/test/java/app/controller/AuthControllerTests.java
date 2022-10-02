@@ -39,7 +39,7 @@ public class AuthControllerTests {
 
     @Test
     @DisplayName("#refresh returns a new token")
-    void findById() {
+    void refresh() {
         Authentication auth = new UsernamePasswordAuthenticationToken("username", "password", List.of());
         String token = "xxx.yyy.zzz";
 
